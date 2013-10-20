@@ -26,25 +26,30 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-//////////////////////////////////////////////////
-// 
-// Admin Menu Page
-// 
-//////////////////////////////////////////////////
+// Is Woocommerce installed?
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
-add_action( 'admin_menu', 'wc_picture_framer_menu' );
+	//////////////////////////////////////////////////
+	// 
+	// Admin Menu Page
+	// 
+	//////////////////////////////////////////////////
 
-function wc_picture_framer_menu() {
-	add_submenu_page( 'woocommerce', 'Woocommerce Picture Framer Settings', 'Picture Frames', 'manage_options', 'wc_picture_framer_settings', 'wc_picture_framer_options');
-}
+	add_action( 'admin_menu', 'wc_picture_framer_menu' );
 
-function wc_picture_framer_options() {
-	if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	function wc_picture_framer_menu() {
+		add_submenu_page( 'woocommerce', 'Woocommerce Picture Framer Settings', 'Picture Frames', 'manage_options', 'wc_picture_framer_settings', 'wc_picture_framer_options');
 	}
-	echo '<div class="wrap">';
-	echo '<p>Here is where the form would go if I actually had options.</p>';
-	echo '</div>';
-}
+
+	function wc_picture_framer_options() {
+		if ( !current_user_can( 'manage_options' ) )  {
+			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+		}
+		echo '<div class="wrap">';
+		echo '<p>Here is where the form would go if I actually had options.</p>';
+		echo '</div>';
+	}
+
+} // end Woocommerce detection
 
 ?>
