@@ -26,6 +26,25 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+//////////////////////////////////////////////////
+// 
+// Admin Menu Page
+// 
+//////////////////////////////////////////////////
 
+add_action( 'admin_menu', 'wc_picture_framer_menu' );
+
+function wc_picture_framer_menu() {
+	add_options_page( 'Woocommerce Picture Framer Settings', 'WC Picture Framer', 'manage_options', 'wc_picture_framer_settings', 'wc_picture_framer_options' );
+}
+
+function wc_picture_framer_options() {
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+	echo '<div class="wrap">';
+	echo '<p>Here is where the form would go if I actually had options.</p>';
+	echo '</div>';
+}
 
 ?>
