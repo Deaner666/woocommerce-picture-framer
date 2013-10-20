@@ -4,7 +4,7 @@
  * Plugin Name: Woocommerce Picture Framer
  * Plugin URI: https://github.com/Deaner666/woocommerce-picture-framer
  * Description: Plugin for automatically adding picture frame and mount designs to Woocommerce product images and thumbnails.
- * Version: 0.1
+ * Version: 0.0.1
  * Author: Dave Dean
  * Author URI: http://www.moortor-design.co.uk
  * License: GPL2
@@ -35,7 +35,7 @@
 add_action( 'admin_menu', 'wc_picture_framer_menu' );
 
 function wc_picture_framer_menu() {
-	add_options_page( 'Woocommerce Picture Framer Settings', 'WC Picture Framer', 'manage_options', 'wc_picture_framer_settings', 'wc_picture_framer_options' );
+	add_submenu_page( 'woocommerce', 'Woocommerce Picture Framer Settings', 'Picture Frames', 'manage_options', 'wc_picture_framer_settings', 'wc_picture_framer_options');
 }
 
 function wc_picture_framer_options() {
