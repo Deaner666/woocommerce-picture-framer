@@ -36,7 +36,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	//////////////////////////////////////////////////
 
 	function wc_picture_framer_activation() {
-		// Code here
+		// Activation code here
 	}
 	
 	register_activation_hook(__FILE__, 'wc_picture_framer_activation');
@@ -90,12 +90,25 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	//////////////////////////////////////////////////
 	// 
+	// Picture Frames Custom Post Meta Fields
+	// 
+	//////////////////////////////////////////////////
+
+	add_action('add_meta_boxes', 'wpf_picture_frame_meta');
+
+	function wpf_picture_frame_meta() {
+		add_meta_box('wpf_picture_frame_image', 'Picture Frame Image', 'wpf_picture_frame_image_meta', 'picture_frames');
+		add_meta_box('wpf_picture_frame_type', 'Picture Frame Type', 'wpf_picture_frame_type_meta', 'picture_frames');
+	}
+
+	//////////////////////////////////////////////////
+	// 
 	// Plugin deactivation
 	// 
 	//////////////////////////////////////////////////
 
 	function wc_picture_framer_deactivation() {
-		// Code here
+		// Deactivation code here
 	}
 	
 	register_deactivation_hook(__FILE__, 'wc_picture_framer_deactivation');
