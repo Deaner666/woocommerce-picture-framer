@@ -131,22 +131,52 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	function wpf_picture_frame_type_meta() {
 		global $post;
 
-	    $picture_frame_type = get_post_meta($post->ID, "_wpf_picture_frame_type", true);
-	    // print_r($picture_frame_type);exit;
+	    $picture_frame_type = get_post_meta($post->ID, "wpf_picture_frame_type", true);
 	    $picture_frame_type = ($picture_frame_type != '') ? json_decode($picture_frame_type) : 'frame';
-
 	    // Use nonce for verification
-	    $html =  '<input type="hidden" name="wpf_type_nonce" value="'. wp_create_nonce(basename(__FILE__)). '" />';
+	    echo '<input type="hidden" name="wpf_type_nonce" value="'. wp_create_nonce(basename(__FILE__)) . '" />';
 
-	    $html .= '
-		<select>
-			<option value="frame" selected="selected">Frame</option>
-			<option value="mount">Mount</option>
-		</select>
-		';
+	    ?>
+	    <table class="form-table">
+	    	<tbody>
+	    		<tr>
+	    			<th scope="row"><label for="wpf_picture_frame_type">Picture Frame Type:</label></th>
+	    			<td>
+						<select id="wpf_picture_frame_type" name="wpf_picture_frame_type">
+							<option value="frame" <?php echo $picture_frame_type == 'frame' ? ' selected="selected"' : ''; ?> >Frame</option>
+							<option value="mount" <?php echo $picture_frame_type == 'mount' ? ' selected="selected"' : ''; ?> >Mount</option>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p><?php echo $picture_frame_type ; ?></p>
+		<?php
 
-        echo $html;
 	}
+
+	add_action('save_post', 'wpf_picture_frame_type_save');
+
+	function wpf_picture_frame_type_save($post_id) {
+		if (!isset($_POST['wpf_type_nonce']) || !wp_verify_nonce($_POST['wpf_type_nonce'], basename(__FILE__))) { return $post_id; }
+		
+		if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) { return $post_id; }
+
+		if ('picture_frames' == $_POST['post_type'] && current_user_can('edit_post', $post_id)) {
+
+			// $picture_frame_type = (isset($_POST['wpf_picture_frame_type']) ? $_POST['wpf_picture_frame_type'] : 'frame');
+
+			// $picture_frame_type = strip_tags(json_encode($picture_frame_type));
+
+			update_post_meta($post_id, "wpf_picture_frame_type", $picture_frame_type);
+
+    	} else {
+
+			return $post_id;
+
+		}
+	}
+
 
 	//////////////////////////////////////////////////
 	// 
