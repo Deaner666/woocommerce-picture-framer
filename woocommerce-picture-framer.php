@@ -101,32 +101,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		add_meta_box('wpf_picture_frame_type', 'Picture Frame Type', 'wpf_picture_frame_type_meta', 'picture_frames', 'side', 'default');
 	}
 
-	// Picture Frame Image Upload
-	// function wpf_picture_frame_image_meta() {
-	// 	global $post;
-
-	//     $picture_frame_image = get_post_meta($post->ID, "_wpf_picture_frame_image", true);
-	//     // print_r($picture_frame_type);exit;
-	//     $picture_frame_image = ($picture_frame_image != '') ? json_decode($picture_frame_image) : '';
-
-	//     // Use nonce for verification
-	//     $html =  '<input type="hidden" name="wpf_image_nonce" value="'. wp_create_nonce(basename(__FILE__)). '" />';
-
-	//     $html .= '
-	// 	'; $html .= '
-	// 	<table class="form-table">
-	// 		<tbody>
-	// 			<tr>
-	// 				<th><label for="wpf_img">Image</label></th>
-	// 				<td><input id="wpf-image-upload" type="text" name="wpf_img" value="".$gallery_images[0]."" /></td>
-	// 			</tr>
-	// 		</tbody>
-	// 	</table>
-	// 	';
-
- //        echo $html;
-	// }
-
 	// Picture Frame Type select
 	function wpf_picture_frame_type_meta() {
 		global $post;
@@ -155,6 +129,12 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	}
 
+	//////////////////////////////////////////////////
+	// 
+	// Save Picture Frames Custom Post Meta Fields
+	// 
+	//////////////////////////////////////////////////
+
 	add_action('save_post', 'wpf_picture_frame_type_save');
 
 	function wpf_picture_frame_type_save($post_id) {
@@ -164,9 +144,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 		if ('picture_frames' == $_POST['post_type'] && current_user_can('edit_post', $post_id)) {
 
-			// $picture_frame_type = (isset($_POST['wpf_picture_frame_type']) ? $_POST['wpf_picture_frame_type'] : 'frame');
+			$picture_frame_type = (isset($_POST['wpf_picture_frame_type']) ? $_POST['wpf_picture_frame_type'] : 'frame');
 
-			// $picture_frame_type = strip_tags(json_encode($picture_frame_type));
+			$picture_frame_type = strip_tags(json_encode($picture_frame_type));
 
 			update_post_meta($post_id, "wpf_picture_frame_type", $picture_frame_type);
 
