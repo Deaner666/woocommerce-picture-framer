@@ -70,7 +70,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	       'labels' => $labels,
 	       'hierarchical' => false,
 	       'description' => 'Picture Frames and mounts for product images and thumbnails',
-	       'supports' => array('title', 'editor'),
+	       'supports' => array('title', 'editor', 'thumbnail'),
 	       'public' => true,
 	       'show_ui' => true,
 	       'show_in_menu' => true,
@@ -97,8 +97,55 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	add_action('add_meta_boxes', 'wpf_picture_frame_meta');
 
 	function wpf_picture_frame_meta() {
-		add_meta_box('wpf_picture_frame_image', 'Picture Frame Image', 'wpf_picture_frame_image_meta', 'picture_frames', 'normal', 'high');
-		add_meta_box('wpf_picture_frame_type', 'Picture Frame Type', 'wpf_picture_frame_type_meta', 'picture_frames', 'side');
+		// add_meta_box('wpf_picture_frame_image', 'Picture Frame Image', 'wpf_picture_frame_image_meta', 'picture_frames', 'side', 'default');
+		add_meta_box('wpf_picture_frame_type', 'Picture Frame Type', 'wpf_picture_frame_type_meta', 'picture_frames', 'side', 'default');
+	}
+
+	// Picture Frame Image Upload
+	// function wpf_picture_frame_image_meta() {
+	// 	global $post;
+
+	//     $picture_frame_image = get_post_meta($post->ID, "_wpf_picture_frame_image", true);
+	//     // print_r($picture_frame_type);exit;
+	//     $picture_frame_image = ($picture_frame_image != '') ? json_decode($picture_frame_image) : '';
+
+	//     // Use nonce for verification
+	//     $html =  '<input type="hidden" name="wpf_image_nonce" value="'. wp_create_nonce(basename(__FILE__)). '" />';
+
+	//     $html .= '
+	// 	'; $html .= '
+	// 	<table class="form-table">
+	// 		<tbody>
+	// 			<tr>
+	// 				<th><label for="wpf_img">Image</label></th>
+	// 				<td><input id="wpf-image-upload" type="text" name="wpf_img" value="".$gallery_images[0]."" /></td>
+	// 			</tr>
+	// 		</tbody>
+	// 	</table>
+	// 	';
+
+ //        echo $html;
+	// }
+
+	// Picture Frame Type select
+	function wpf_picture_frame_type_meta() {
+		global $post;
+
+	    $picture_frame_type = get_post_meta($post->ID, "_wpf_picture_frame_type", true);
+	    // print_r($picture_frame_type);exit;
+	    $picture_frame_type = ($picture_frame_type != '') ? json_decode($picture_frame_type) : 'frame';
+
+	    // Use nonce for verification
+	    $html =  '<input type="hidden" name="wpf_type_nonce" value="'. wp_create_nonce(basename(__FILE__)). '" />';
+
+	    $html .= '
+		<select>
+			<option value="frame" selected="selected">Frame</option>
+			<option value="mount">Mount</option>
+		</select>
+		';
+
+        echo $html;
 	}
 
 	//////////////////////////////////////////////////
