@@ -41,6 +41,40 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	
 	register_activation_hook(__FILE__, 'wc_picture_framer_activation');
 
+	//////////////////////////////////////////////////
+	// 
+	// Picture Frames Custom Post Type
+	// 
+	//////////////////////////////////////////////////
+
+	add_action('init', 'wpf_register_picture_frame');
+
+	function wpf_register_picture_frame() {
+	    $labels = array(
+	       'menu_name' => _x('Picture Frames', 'picture_frames'),
+	    );
+
+	    $args = array(
+	       'labels' => $labels,
+	       'hierarchical' => false,
+	       'description' => 'Picture Frames and mounts for product images and thumbnails',
+	       'supports' => array('title', 'editor'),
+	       'public' => true,
+	       'show_ui' => true,
+	       'show_in_menu' => true,
+	       'show_in_nav_menus' => true,
+	       'publicly_queryable' => true,
+	       'exclude_from_search' => false,
+	       'menu_position' => 63,
+	       'has_archive' => true,
+	       'query_var' => true,
+	       'can_export' => true,
+	       'rewrite' => true,
+	       'capability_type' => 'post'
+	    );
+
+	    register_post_type('picture_frames', $args);
+	}	
 
 	//////////////////////////////////////////////////
 	// 
@@ -48,30 +82,30 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// 
 	//////////////////////////////////////////////////
 
-	add_action( 'admin_menu', 'wc_picture_framer_menus' );
+	// add_action( 'admin_menu', 'wc_picture_framer_menus' );
 
-	function wc_picture_framer_menus() {
-		add_menu_page('All Picture Frames', 'Picture Frames', 'manage_options', 'wc_picture_framer', 'wc_picture_framer_index');
-		add_submenu_page('wc_picture_framer', 'Add New Picture Frame', 'Add New', 'manage_options', 'wc_picture_framer_add', 'wc_picture_framer_add');
-	}
+	// function wc_picture_framer_menus() {
+	// 	add_menu_page('All Picture Frames', 'Picture Frames', 'manage_options', 'wc_picture_framer', 'wc_picture_framer_index');
+	// 	add_submenu_page('wc_picture_framer', 'Add New Picture Frame', 'Add New', 'manage_options', 'wc_picture_framer_add', 'wc_picture_framer_add');
+	// }
 
-	function wc_picture_framer_index() {
-		if ( !current_user_can( 'manage_options' ) )  {
-			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-		}
-		echo '<div class="wrap">';
-		echo '<p>Here is where the form would go if I actually had options.</p>';
-		echo '</div>';
-	}
+	// function wc_picture_framer_index() {
+	// 	if ( !current_user_can( 'manage_options' ) )  {
+	// 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	// 	}
+	// 	echo '<div class="wrap">';
+	// 	echo '<p>Here is where the form would go if I actually had options.</p>';
+	// 	echo '</div>';
+	// }
 
-	function wc_picture_framer_add() {
-		if ( !current_user_can( 'manage_options' ) )  {
-			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-		}
-		echo '<div class="wrap">';
-		echo '<p>Here is where the form would go if I actually had options.</p>';
-		echo '</div>';
-	}
+	// function wc_picture_framer_add() {
+	// 	if ( !current_user_can( 'manage_options' ) )  {
+	// 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	// 	}
+	// 	echo '<div class="wrap">';
+	// 	echo '<p>Here is where the form would go if I actually had options.</p>';
+	// 	echo '</div>';
+	// }
 
 	//////////////////////////////////////////////////
 	// 
