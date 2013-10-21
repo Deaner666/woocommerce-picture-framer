@@ -35,11 +35,11 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// 
 	//////////////////////////////////////////////////
 
-	function wc_picture_framer_activation() {
+	function wpf_activation() {
 		// Activation code here
 	}
 	
-	register_activation_hook(__FILE__, 'wc_picture_framer_activation');
+	register_activation_hook(__FILE__, 'wpf_activation');
 
 	//////////////////////////////////////////////////
 	// 
@@ -47,9 +47,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// 
 	//////////////////////////////////////////////////
 
-	add_action('init', 'wpf_register_picture_frame');
+	add_action('init', 'wpf_register_picture_frames');
 
-	function wpf_register_picture_frame() {
+	function wpf_register_picture_frames() {
 		$labels = array(
 			'name'               => 'Picture Frames',
 			'singular_name'      => 'Picture Frame',
@@ -74,14 +74,14 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	       'public' => true,
 	       'show_ui' => true,
 	       'show_in_menu' => true,
-	       'show_in_nav_menus' => true,
-	       'publicly_queryable' => true,
-	       'exclude_from_search' => false,
-	       'menu_position' => 63,
-	       'has_archive' => true,
-	       'query_var' => true,
+	       'show_in_nav_menus' => false,
+	       'publicly_queryable' => false,
+	       'exclude_from_search' => true,
+	       'menu_position' => 62,
+	       'has_archive' => false,
+	       'query_var' => false,
 	       'can_export' => true,
-	       'rewrite' => true,
+	       'rewrite' => false,
 	       'capability_type' => 'post'
 	    );
 
@@ -114,7 +114,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	    <table class="form-table">
 	    	<tbody>
 	    		<tr>
-	    			<th scope="row"><label for="wpf_picture_frame_type">Picture Frame Type:</label></th>
+	    			<th scope="row"><label for="wpf_picture_frame_type">Frame or mount?:</label></th>
 	    			<td>
 						<select id="wpf_picture_frame_type" name="wpf_picture_frame_type">
 							<option value="frame" <?php echo $picture_frame_type == 'frame' ? ' selected="selected"' : ''; ?> >Frame</option>
@@ -124,7 +124,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				</tr>
 			</tbody>
 		</table>
-		<p><?php echo $picture_frame_type ; ?></p>
+		<p>Is this a picture frame or a mount?</p>
 		<?php
 
 	}
@@ -164,11 +164,11 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// 
 	//////////////////////////////////////////////////
 
-	function wc_picture_framer_deactivation() {
+	function wpf_deactivation() {
 		// Deactivation code here
 	}
 	
-	register_deactivation_hook(__FILE__, 'wc_picture_framer_deactivation');
+	register_deactivation_hook(__FILE__, 'wpf_deactivation');
 
 } // end Woocommerce detection
 
