@@ -31,6 +31,19 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	//////////////////////////////////////////////////
 	// 
+	// Plugin activation
+	// 
+	//////////////////////////////////////////////////
+
+	function wc_picture_framer_activation() {
+		// Code here
+	}
+	
+	register_activation_hook(__FILE__, 'wc_picture_framer_activation');
+
+
+	//////////////////////////////////////////////////
+	// 
 	// Admin Menu Page
 	// 
 	//////////////////////////////////////////////////
@@ -59,6 +72,18 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		echo '<p>Here is where the form would go if I actually had options.</p>';
 		echo '</div>';
 	}
+
+	//////////////////////////////////////////////////
+	// 
+	// Plugin deactivation
+	// 
+	//////////////////////////////////////////////////
+
+	function wc_picture_framer_deactivation() {
+		// Code here
+	}
+	
+	register_deactivation_hook(__FILE__, 'wc_picture_framer_deactivation');
 
 } // end Woocommerce detection
 
