@@ -35,14 +35,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// 
 	//////////////////////////////////////////////////
 
-	add_action( 'admin_menu', 'wc_picture_framer_menu' );
-	add_action( 'admin_menu', 'wc_picture_framer_menu_add' );
+	add_action( 'admin_menu', 'wc_picture_framer_menus' );
 
-	function wc_picture_framer_menu() {
+	function wc_picture_framer_menus() {
 		add_menu_page('All Picture Frames', 'Picture Frames', 'manage_options', 'wc_picture_framer', 'wc_picture_framer_index');
-	}
-
-	function wc_picture_framer_menu_add() {
 		add_submenu_page('wc_picture_framer', 'Add New Picture Frame', 'Add New', 'manage_options', 'wc_picture_framer_add', 'wc_picture_framer_add');
 	}
 
