@@ -43,7 +43,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	//////////////////////////////////////////////////
 	// 
-	// Picture Frames Custom Post Type
+	// Picture Frames custom post type
 	// 
 	//////////////////////////////////////////////////
 
@@ -90,7 +90,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	//////////////////////////////////////////////////
 	// 
-	// Picture Frames Custom Post Meta Fields
+	// Picture Frames admin meta box
 	// 
 	//////////////////////////////////////////////////
 
@@ -131,7 +131,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	//////////////////////////////////////////////////
 	// 
-	// Save Picture Frames Custom Post Meta Fields
+	// Save Picture Frames meta fields
 	// 
 	//////////////////////////////////////////////////
 
@@ -157,6 +157,18 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		}
 	}
 
+	//////////////////////////////////////////////////
+	// 
+	// Hook into single-product.php to add
+	// picture frame selector
+	// 
+	//////////////////////////////////////////////////
+
+	add_action('woocommerce_after_main_content', 'wpf_picture_frame_selector');
+
+	function wpf_picture_frame_selector() {
+		
+	}
 
 	//////////////////////////////////////////////////
 	// 
