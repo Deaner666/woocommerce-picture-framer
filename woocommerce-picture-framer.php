@@ -164,10 +164,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// 
 	//////////////////////////////////////////////////
 
-	add_action('woocommerce_after_main_content', 'wpf_picture_frame_selector');
+	add_action('woocommerce_before_add_to_cart_form', 'wpf_picture_frame_selector');
 
 	function wpf_picture_frame_selector() {
-		
+		include_once 'templates/picture-frame-selector.php';
 	}
 
 	//////////////////////////////////////////////////
