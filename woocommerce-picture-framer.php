@@ -43,6 +43,23 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	//////////////////////////////////////////////////
 	// 
+	// Register scripts and styles
+	// 
+	//////////////////////////////////////////////////
+
+	add_action('wp_enqueue_scripts', 'wpf_enqueue_scripts');
+
+	function wpf_enqueue_scripts() {
+		wp_enqueue_script( 'jquery-ui-core' );
+	    wp_enqueue_script( 'jquery-ui-widget' );
+	    wp_enqueue_script( 'jquery-ui-dialog' );
+	    wp_enqueue_script( 'picture_framer_modal', plugins_url('/js/picture_framer_modal.js', __FILE__ ), array( 'jquery-ui-widget' ) );
+	    wp_enqueue_style( 'picture_framer_modal', plugins_url('/css/picture_framer_modal.css', __FILE__ ) );
+	    wp_enqueue_style( 'jquery-ui', plugins_url('/css/jquery-ui.css', __FILE__ ) );
+    }
+
+	//////////////////////////////////////////////////
+	// 
 	// Picture Frames custom post type
 	// 
 	//////////////////////////////////////////////////
