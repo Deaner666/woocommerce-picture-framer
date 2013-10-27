@@ -5,7 +5,7 @@ jQuery(document).ready( function() {
     autoOpen: false,
     position: { my: "center", at: "center", of: window },
     width: 800,
-    height: 600,
+    height: 500,
     draggable: false,
     resizable: false,
     show: 175,
