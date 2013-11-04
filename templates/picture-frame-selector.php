@@ -10,18 +10,19 @@
 		<ul class="picture-frames-list">
 		<?php
 			// Picture Frames & Mounts Query
-			// $args = 'post_type' => 'picture_frames';
-			$args = array (
+			$args = array(
 				'post_type' => 'picture_frames',
 				'meta_query' => array(
 					array(
 						'key' => 'wpf_picture_frame_type',
 						'value' => 'frame',
+						'type' => 'CHAR',
 						'compare' => '='
-					),
+					)
 				)
 			);
 			$picture_frames = new WP_Query( $args );
+			// $picture_frames = new WP_Query( 'post_type=picture_frames' );
 
 			// The Picture Frames Loop
 			while ( $picture_frames->have_posts() ) {
@@ -36,14 +37,15 @@
 		<ul class="mounts-list">
 		<?php
 			// The Mounts Query
-			$args2 = array (
+			$args2 = array(
 				'post_type' => 'picture_frames',
 				'meta_query' => array(
 					array(
 						'key' => 'wpf_picture_frame_type',
 						'value' => 'mount',
+						'type' => 'CHAR',
 						'compare' => '='
-					),
+					)
 				)
 			);
 			$mounts = new WP_Query( $args2 );
