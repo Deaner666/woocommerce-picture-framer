@@ -18,8 +18,14 @@
 					$picture_frame_type = json_decode( get_post_meta($post_id, 'wpf_picture_frame_type', true) );
 					
 					if ( $picture_frame_type == 'frame' ) {
-						echo "<li>" . get_post_meta($post_id, 'wpf_picture_frame_type', true) . "</li>";
-						echo "<li>" . get_the_title() . "</li>";
+						?>
+						<li>
+							<?php
+								if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } 
+								get_the_title();
+							?>
+						</li>
+						<?php
 					}
 				}
 			}
@@ -38,8 +44,14 @@
 					$picture_frame_type = json_decode( get_post_meta($post_id, 'wpf_picture_frame_type', true) );
 					
 					if ( $picture_frame_type == 'mount' ) {
-						echo "<li>" . get_post_meta($post_id, 'wpf_picture_frame_type', true) . "</li>";
-						echo "<li>" . get_the_title() . "</li>";
+						?>
+						<li>
+							<?php
+								if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } 
+								get_the_title();
+							?>
+						</li>
+						<?php
 					}
 				}
 			}

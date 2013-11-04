@@ -1,2 +1,5 @@
 #picture-frame-selector-modal { display: none; }
 .ui-dialog-titlebar { display: none; }
+ul#picture-frames-list li, ul#mounts-list li {
+	display: inline; list-style-type: none;
+}
