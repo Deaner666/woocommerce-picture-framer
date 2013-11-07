@@ -1,5 +1,11 @@
 #picture-frame-selector-modal { display: none; }
+
 .ui-dialog-titlebar { display: none; }
+
+#picture-frame-selector-modal img.woocommerce-main-image {
+	height: 250px; width: auto;
+}
+
 ul#picture-frames-list li, ul#mounts-list li {
 	display: inline; list-style-type: none;
 }
