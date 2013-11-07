@@ -53,7 +53,7 @@
 							<li>
 								<?php
 									if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } 
-									get_the_title();
+									echo '<p class="frame-caption">' . get_the_title() . '</p>';
 								?>
 							</li>
 							<?php
@@ -80,7 +80,7 @@
 							<li>
 								<?php
 									if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } 
-									get_the_title();
+									echo '<p class="frame-caption">' . get_the_title() . '</p>';
 								?>
 							</li>
 							<?php
