@@ -2,8 +2,20 @@
 
 .ui-dialog-titlebar { display: none; }
 
+#picture-frame-selector-image {
+	width: 50%; float: left;
+}
+
+#picture-frame-selector-lists {
+	width: 50%; float: right;
+}
+
 #picture-frame-selector-modal img.woocommerce-main-image {
-	height: 250px; width: auto;
+	height: auto; width: 85%;
+}
+
+#picture-frame-selector-modal img.attachment-thumbnail {
+	width: 100px; height: auto;
 }
 
 ul#picture-frames-list li, ul#mounts-list li {
