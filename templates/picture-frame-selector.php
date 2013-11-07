@@ -52,7 +52,11 @@
 							?>
 							<li>
 								<?php
-									if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } 
+									if ( has_post_thumbnail() ) {
+										echo '<a href="javascript:;">';
+											the_post_thumbnail('thumbnail');
+										echo '</a>';
+									} 
 									echo '<p class="frame-caption">' . get_the_title() . '</p>';
 								?>
 							</li>
@@ -79,7 +83,11 @@
 							?>
 							<li>
 								<?php
-									if ( has_post_thumbnail() ) { the_post_thumbnail('thumbnail'); } 
+									if ( has_post_thumbnail() ) {
+										echo '<a href="javascript:;">';
+											the_post_thumbnail('thumbnail');
+										echo '</a>';
+									}
 									echo '<p class="frame-caption">' . get_the_title() . '</p>';
 								?>
 							</li>
