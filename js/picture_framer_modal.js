@@ -20,10 +20,21 @@ jQuery(document).ready( function() {
     jQuery( "#picture-frame-selector-modal" ).dialog( "open" );
   });
 
-  jQuery( "a.thumbnail-click" ).each( function() {
+  jQuery( "a.frame-thumbnail-click" ).each( function() {
     jQuery(this).click( function() {
       var frame_id = "frame_" + this.id;
-      jQuery( frame_id ).display = "block";
+      // console.log(frame_id);
+      jQuery( '.overlay-frame' ).hide();
+      jQuery( '#' + frame_id ).show();
+    });
+  });
+
+  jQuery( "a.mount-thumbnail-click" ).each( function() {
+    jQuery(this).click( function() {
+      var mount_id = "mount_" + this.id;
+      // console.log(mount_id);
+      jQuery( '.overlay-mount' ).hide();
+      jQuery( '#' + mount_id ).show();
     });
   });
 

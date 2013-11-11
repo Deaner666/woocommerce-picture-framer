@@ -47,7 +47,7 @@
 						
 						if ( $picture_frame_type == 'frame' ) {
 							?>
-							<div class="overlay" id="frame_<?php echo $post_id; ?>">
+							<div class="overlay-frame" id="frame_<?php echo $post_id; ?>">
 								<?php
 									if ( has_post_thumbnail() ) {
 										echo the_post_thumbnail('medium');
@@ -64,6 +64,30 @@
 			?>
 			
 			<!-- Mount overlays -->
+			<?php
+				if( $picture_frames->have_posts() ) {
+					while( $picture_frames->have_posts() ) {
+						$picture_frames->the_post();
+						$post_id = get_the_ID();
+						$picture_frame_type = json_decode( get_post_meta($post_id, 'wpf_picture_frame_type', true) );
+						
+						if ( $picture_frame_type == 'mount' ) {
+							?>
+							<div class="overlay-mount" id="mount_<?php echo $post_id; ?>">
+								<?php
+									if ( has_post_thumbnail() ) {
+										echo the_post_thumbnail('medium');
+									}
+								?>
+							</div>
+							<?php
+						}
+					}
+				}
+				else {
+					echo 'Uh oh, no mounts!';
+				}
+			?>
 
 
 		</div><!-- /picture-frame-selector-image -->
@@ -83,7 +107,7 @@
 							<li>
 								<?php
 									if ( has_post_thumbnail() ) {
-										echo '<a href="javascript:;" class="thumbnail-click" id="' . $post_id . '">';
+										echo '<a href="javascript:;" class="frame-thumbnail-click" id="' . $post_id . '">';
 											the_post_thumbnail('thumbnail');
 										echo '</a>';
 									} 
@@ -114,7 +138,7 @@
 							<li>
 								<?php
 									if ( has_post_thumbnail() ) {
-										echo '<a href="javascript:;">';
+										echo '<a href="javascript:;" class="mount-thumbnail-click" id="' . $post_id . '">';
 											the_post_thumbnail('thumbnail');
 										echo '</a>';
 									}
