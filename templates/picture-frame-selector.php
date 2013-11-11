@@ -17,7 +17,7 @@
 		</header>
 
 		<div id="picture-frame-selector-image">
-			<!-- Product thumbnail here -->
+			<!-- Product main thumbnail -->
 			<?php
 				if ( has_post_thumbnail() ) {
 
@@ -35,13 +35,43 @@
 
 				}
 			?>
-		</div><!-- picture-frame-selector-image -->
+			
+			<!-- Frame overlays -->
+			<?php
+				$picture_frames = new WP_Query( 'post_type=picture_frames' );
+				if( $picture_frames->have_posts() ) {
+					while( $picture_frames->have_posts() ) {
+						$picture_frames->the_post();
+						$post_id = get_the_ID();
+						$picture_frame_type = json_decode( get_post_meta($post_id, 'wpf_picture_frame_type', true) );
+						
+						if ( $picture_frame_type == 'frame' ) {
+							?>
+							<div class="overlay" id="frame_<?php echo $post_id ?>">
+								<?php
+									if ( has_post_thumbnail() ) {
+										echo the_post_thumbnail('medium');
+									}
+								?>
+							</overlay>
+							<?php
+						}
+					}
+				}
+				else {
+					echo 'Uh oh, no mounts!';
+				}
+			?>
+			
+			<!-- Mount overlays -->
+
+
+		</div><!-- /picture-frame-selector-image -->
 
 		<div id="picture-frame-selector-lists">
 			<h2>Picture Frames</h2>
 			<ul id="picture-frames-list">
 			<?php
-				$picture_frames = new WP_Query( 'post_type=picture_frames' );
 				if( $picture_frames->have_posts() ) {
 					while( $picture_frames->have_posts() ) {
 						$picture_frames->the_post();

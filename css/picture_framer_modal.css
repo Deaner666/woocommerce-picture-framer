@@ -6,7 +6,10 @@
 .ui-dialog-titlebar { display: none; }
 
 #picture-frame-selector-image {
-	width: 50%; float: left;
+	width: 50%; float: left; position: relative;
+}
+.overlay {
+	position: absolute; top: 0; left: 0;
 }
 
 #picture-frame-selector-lists {
