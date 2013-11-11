@@ -83,7 +83,7 @@
 							<li>
 								<?php
 									if ( has_post_thumbnail() ) {
-										echo '<a href="javascript:;" class="thumbnail-click" id="frame_click_' . $post_id . '">';
+										echo '<a href="javascript:;" class="thumbnail-click" id="' . $post_id . '">';
 											the_post_thumbnail('thumbnail');
 										echo '</a>';
 									} 
