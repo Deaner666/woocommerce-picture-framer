@@ -195,12 +195,15 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	//////////////////////////////////////////////////
 
 	add_filter("gform_pre_render", "wpf_populate_frames");
+	add_filter("gform_pre_render", "wpf_populate_mounts");
 
 	// Note: when changing drop down values, we also need to use the gform_admin_pre_render so that the right values are displayed when editing the entry.
 	add_filter("gform_admin_pre_render", "wpf_populate_frames");
+	add_filter("gform_admin_pre_render", "wpf_populate_mounts");
 
 	// Note: this will allow for the labels to be used during the submission process in case values are enabled
 	add_filter('gform_pre_submission_filter', 'wpf_populate_frames');
+	add_filter('gform_pre_submission_filter', 'wpf_populate_mounts');
 
 	function wpf_populate_frames($form){
 
@@ -208,10 +211,17 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	    // if($form["id"] != 5)
 	    //    return $form;
 
-	    // Pull in picture frames custom posts type
-	    $args = array('post_type' => 'picture_frames',
-		    		  array( 'meta_key' => 'wpf_picture_frame_type',
-		    		  	   'meta_value' => 'frame' ));
+	    // Pull in picture frames custom post type
+	    $frame_type = json_encode('frame');
+	    $args = array(
+	    		'post_type' => 'picture_frames',
+		    	'meta_query' => array(
+		    		array(
+			    		'key' => 'wpf_picture_frame_type',
+			    		'value' => $frame_type
+		    		)
+		    	)
+		);
 	    $posts = get_posts($args);
 
 	    // Creating drop down item array.
@@ -227,6 +237,44 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	    //Adding items to picture frames field
 	    foreach($form["fields"] as &$field)
 	        if($field["id"] == 4){            
+	            $field["choices"] = $items;
+	        }
+
+	    return $form;
+	}
+
+	function wpf_populate_mounts($form){
+
+	    // only populating drop down for form id 5
+	    // if($form["id"] != 5)
+	    //    return $form;
+
+	    // Pull in picture frames custom post type
+	    $frame_type = json_encode('mount');
+	    $args = array(
+	    		'post_type' => 'picture_frames',
+		    	'meta_query' => array(
+		    		array(
+			    		'key' => 'wpf_picture_frame_type',
+			    		'value' => $frame_type
+		    		)
+		    	)
+		);
+	    $posts = get_posts($args);
+
+	    // Creating drop down item array.
+	    $items = array();
+
+	    // Adding initial blank value.
+	    // $items[] = array("text" => "", "value" => "");
+
+	    //Adding picture frame titles to the items array
+	    foreach($posts as $post)
+	        $items[] = array("value" => $post->post_title, "text" => $post->post_title);
+
+	    //Adding items to picture frames field
+	    foreach($form["fields"] as &$field)
+	        if($field["id"] == 5){            
 	            $field["choices"] = $items;
 	        }
 
