@@ -9,7 +9,7 @@
 	width: 50%; float: left; position: relative;
 }
 .overlay {
-	position: absolute; top: 0; left: 0;
+	position: absolute; top: 0; left: 0; display: none;
 }
 
 #picture-frame-selector-lists {

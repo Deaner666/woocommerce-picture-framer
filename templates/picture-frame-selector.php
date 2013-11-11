@@ -47,13 +47,13 @@
 						
 						if ( $picture_frame_type == 'frame' ) {
 							?>
-							<div class="overlay" id="frame_<?php echo $post_id ?>">
+							<div class="overlay" id="frame_<?php echo $post_id; ?>">
 								<?php
 									if ( has_post_thumbnail() ) {
 										echo the_post_thumbnail('medium');
 									}
 								?>
-							</overlay>
+							</div>
 							<?php
 						}
 					}
@@ -83,7 +83,7 @@
 							<li>
 								<?php
 									if ( has_post_thumbnail() ) {
-										echo '<a href="javascript:;">';
+										echo '<a href="javascript:;" class="thumbnail-click" id="frame_click_' . $post_id . '">';
 											the_post_thumbnail('thumbnail');
 										echo '</a>';
 									} 

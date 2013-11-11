@@ -20,4 +20,8 @@ jQuery(document).ready( function() {
     jQuery( "#picture-frame-selector-modal" ).dialog( "open" );
   });
 
+  jQuery( ".thumbnail-click" ).click(function() {
+    // 
+  });
+
 });
