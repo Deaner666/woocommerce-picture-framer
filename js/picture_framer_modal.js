@@ -11,7 +11,12 @@ jQuery(document).ready( function() {
     show: 175,
     hide: 175,
     buttons: [
-      { text: "Ok", click: function() { jQuery( this ).dialog( "close" ); } },
+      { text: "Ok",
+        click: function() {
+          
+          jQuery( this ).dialog( "close" );
+        }
+      },
       { text: "Cancel", click: function() { jQuery( this ).dialog( "close" ); } }
     ]
   });
@@ -26,6 +31,7 @@ jQuery(document).ready( function() {
       // console.log(frame_id);
       jQuery( '.overlay-frame' ).hide();
       jQuery( '#' + frame_id ).show();
+      jQuery( "input[type=radio][value='" + this.title + "']" ).prop( 'checked', true );
     });
   });
 

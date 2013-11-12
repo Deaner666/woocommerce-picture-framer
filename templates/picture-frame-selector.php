@@ -100,6 +100,7 @@
 					while( $picture_frames->have_posts() ) {
 						$picture_frames->the_post();
 						$post_id = get_the_ID();
+						$post_title = get_the_title();
 						$picture_frame_type = json_decode( get_post_meta($post_id, 'wpf_picture_frame_type', true) );
 						
 						if ( $picture_frame_type == 'frame' ) {
@@ -107,7 +108,7 @@
 							<li>
 								<?php
 									if ( has_post_thumbnail() ) {
-										echo '<a href="javascript:;" class="frame-thumbnail-click" id="' . $post_id . '">';
+										echo '<a href="javascript:;" class="frame-thumbnail-click" title="' . $post_title . '" id="' . $post_id . '">';
 											the_post_thumbnail('thumbnail');
 										echo '</a>';
 									} 
