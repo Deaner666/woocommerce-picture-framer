@@ -1,11 +1,14 @@
 jQuery(document).ready( function() {
 
+  var dialogWidth = jQuery( window ).width() * 0.8;
+  var dialogHeight = jQuery( window ).height() * 0.85;
+
   jQuery( "#picture-frame-selector-modal" ).dialog({
     modal: true,
     autoOpen: false,
     position: { my: "center", at: "center", of: window },
-    width: 800,
-    height: 500,
+    width: dialogWidth,
+    height: dialogHeight,
     draggable: false,
     resizable: false,
     show: 175,

@@ -8,14 +8,22 @@
 #picture-frame-selector-image {
 	width: 50%; float: left; position: relative;
 }
+
+#main-image-frame { width: 100%; height: auto; }
+#main-image-frame img { width: 80%; height: 80%; margin: 10% 10%; }
+
 .overlay-frame, .overlay-mount {
-	position: absolute; top: 0; left: 0; display: none;
+	width: 100%; height: auto; position: absolute; top: 0; left: 0;
+	display: none;
+}
+.overlay-frame img, .overlay-mount img {
+	width: 100%; height: auto;
 }
 .overlay-frame { z-index: 1000; }
 .overlay-mount { z-index: 500; }
 
 #picture-frame-selector-lists {
-	width: 50%; float: right;
+	width: 47%; float: right; padding-left: 3%;
 }
 
 #picture-frame-selector-modal img.woocommerce-main-image {
