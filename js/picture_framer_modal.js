@@ -11,13 +11,7 @@ jQuery(document).ready( function() {
     show: 175,
     hide: 175,
     buttons: [
-      { text: "Ok",
-        click: function() {
-          
-          jQuery( this ).dialog( "close" );
-        }
-      },
-      { text: "Cancel", click: function() { jQuery( this ).dialog( "close" ); } }
+      { text: "OK", click: function() { jQuery( this ).dialog( "close" ); } }
     ]
   });
 
@@ -41,6 +35,7 @@ jQuery(document).ready( function() {
       // console.log(mount_id);
       jQuery( '.overlay-mount' ).hide();
       jQuery( '#' + mount_id ).show();
+      jQuery( "input[type=radio][value='" + this.title + "']" ).prop( 'checked', true );
     });
   });
 
