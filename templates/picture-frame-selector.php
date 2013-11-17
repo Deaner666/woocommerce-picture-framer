@@ -3,7 +3,7 @@
 
 	global $post, $woocommerce, $product;
 
-	if ( has_term('framed-print', 'product_cat') ) {
+	if ( has_term('framed-prints', 'product_cat') ) {
 ?>
 
 <section id="picture-frame-selector">
