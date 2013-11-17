@@ -1,5 +1,6 @@
 #picture-frame-selector-lead-in {
 	clear: left; padding: 2%; background: #fafafa; width: 44%;
+	margin-bottom: 1.618em;
 }
 
 #picture-frame-selector-modal { display: none; }
@@ -32,7 +33,7 @@
 }
 
 #picture-frame-selector-modal img.woocommerce-main-image {
-	height: auto; width: 100%;
+	height: auto; width: 80%;
 }
 
 #picture-frame-selector-modal img.attachment-thumbnail {
