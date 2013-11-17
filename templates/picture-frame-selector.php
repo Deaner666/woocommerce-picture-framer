@@ -3,7 +3,7 @@
 
 	global $post, $woocommerce, $product;
 
-	if ( has_term('framed-prints', 'product_cat') ) {
+	if ( has_term('framed-map-prints', 'product_cat') ) {
 ?>
 
 <section id="picture-frame-selector">
