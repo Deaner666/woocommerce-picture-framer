@@ -2,6 +2,8 @@
 	if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	global $post, $woocommerce, $product;
+
+	if ( has_term('framed-print', 'product_cat') ) {
 ?>
 
 <section id="picture-frame-selector">
@@ -162,3 +164,5 @@
 	</article>
 
 </section>
+
+<?php } ?>
