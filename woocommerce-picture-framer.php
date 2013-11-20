@@ -124,7 +124,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	    $picture_frame_type = get_post_meta($post->ID, "wpf_picture_frame_type", true);
 	    $picture_frame_type = ($picture_frame_type != '') ? json_decode($picture_frame_type) : 'frame';
-	    $picture_frame_sku = get_post_meta($post->ID, "wpf_picture_frame_sku", true);
+	    $picture_frame_sku = json_decode( get_post_meta($post->ID, "wpf_picture_frame_sku", true) );
 	    // Use nonce for verification
 	    echo '<input type="hidden" name="wpf_type_nonce" value="'. wp_create_nonce(basename(__FILE__)) . '" />';
 
@@ -144,9 +144,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				<tr>
 	    			<th scope="row"><label for="wpf_picture_frame_sku">SKU:</label></th>
 	    			<td>
-						<input type="text" id="wpf_picture_frame_sku" name="wpf_picture_frame_sku">
-							<?php echo $picture_frame_sku ? $picture_frame_sku : ""; ?>
-						</input>
+						<input type="text" id="wpf_picture_frame_sku" name="wpf_picture_frame_sku" value="<?php echo $picture_frame_sku; ?>" />
 					</td>
 				</tr>
 			</tbody>
