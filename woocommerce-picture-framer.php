@@ -138,6 +138,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 							<option value="frame" <?php echo $picture_frame_type == 'frame' ? ' selected="selected"' : ''; ?> >Frame</option>
 							<option value="mount" <?php echo $picture_frame_type == 'mount' ? ' selected="selected"' : ''; ?> >Mount</option>
 						</select>
+						<p>Is this a picture frame or a mount?</p>
 					</td>
 				</tr>
 				<tr>
@@ -150,7 +151,6 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				</tr>
 			</tbody>
 		</table>
-		<p>Is this a picture frame or a mount?</p>
 		<?php
 
 	}
@@ -170,11 +170,15 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 		if ('picture_frames' == $_POST['post_type'] && current_user_can('edit_post', $post_id)) {
 
+			// Save picture_frame_type
 			$picture_frame_type = (isset($_POST['wpf_picture_frame_type']) ? $_POST['wpf_picture_frame_type'] : 'frame');
-
 			$picture_frame_type = strip_tags(json_encode($picture_frame_type));
-
 			update_post_meta($post_id, "wpf_picture_frame_type", $picture_frame_type);
+
+			// Save picture_Frame_sku
+			$picture_frame_sku = (isset($_POST['wpf_picture_frame_sku']) ? $_POST['wpf_picture_frame_sku'] : '');
+			$picture_frame_sku = strip_tags(json_encode($picture_frame_sku));
+			update_post_meta($post_id, "wpf_picture_frame_sku", $picture_frame_sku);
 
     	} else {
 
