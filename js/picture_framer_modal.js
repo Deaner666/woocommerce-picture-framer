@@ -20,6 +20,7 @@ jQuery(document).ready( function() {
 
   jQuery( ".modal-opener" ).click(function() {
     jQuery( "#picture-frame-selector-modal" ).dialog( "open" );
+    jQuery( "#picture-frame-selector-lists" ).height(dialogHeight * 0.7);
   });
 
   jQuery( "a.frame-thumbnail-click" ).each( function() {

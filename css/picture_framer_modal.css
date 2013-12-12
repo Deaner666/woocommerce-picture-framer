@@ -38,7 +38,7 @@
 .overlay-mount { z-index: 500; }
 
 #picture-frame-selector-lists {
-	width: 47%; float: right; padding-left: 3%;
+	width: 47%; float: right; padding-left: 3%; overflow: auto;
 }
 
 #picture-frame-selector-modal img.woocommerce-main-image {
