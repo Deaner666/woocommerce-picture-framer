@@ -54,7 +54,7 @@
 							<div class="overlay-frame" id="frame_<?php echo $post_id; ?>">
 								<?php
 									if ( has_post_thumbnail() ) {
-										echo the_post_thumbnail('medium');
+										echo the_post_thumbnail('large');
 									}
 								?>
 							</div>
@@ -80,7 +80,7 @@
 							<div class="overlay-mount" id="mount_<?php echo $post_id; ?>">
 								<?php
 									if ( has_post_thumbnail() ) {
-										echo the_post_thumbnail('medium');
+										echo the_post_thumbnail('large');
 									}
 								?>
 							</div>
