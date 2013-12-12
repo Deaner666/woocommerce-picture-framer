@@ -14,9 +14,18 @@
 	width: 50%; float: left; position: relative;
 }
 
-#main-image-frame { width: 100%; height: auto; }
-#main-image-frame a:focus { outline-style: none; }
-#main-image-frame img { width: 80%; height: 80%; margin: 10% 10%; }
+#main-image-frame {
+	width: 100%; height: auto; position: absolute; top: 0; left: 0;
+}
+#main-image-frame img {
+	width: 65%; height: auto; position: absolute; left: 50%; top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	z-indez: 250; margin-top: 40%;
+}
 
 .overlay-frame, .overlay-mount {
 	width: 100%; height: auto; position: absolute; top: 0; left: 0;
