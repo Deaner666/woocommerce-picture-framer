@@ -42,7 +42,7 @@
 			
 			<!-- Frame overlays -->
 			<?php
-				$picture_frames = new WP_Query( 'post_type=picture_frames' );
+				$picture_frames = new WP_Query( array( 'post_type' => 'picture_frames', 'nopaging' => true ) );
 				if( $picture_frames->have_posts() ) {
 					while( $picture_frames->have_posts() ) {
 						$picture_frames->the_post();
