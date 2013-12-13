@@ -226,6 +226,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	    $frame_type = json_encode('frame');
 	    $args = array(
 	    		'post_type' => 'picture_frames',
+	    		'nopaging' => true,
 		    	'meta_query' => array(
 		    		array(
 			    		'key' => 'wpf_picture_frame_type',
@@ -264,6 +265,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	    $frame_type = json_encode('mount');
 	    $args = array(
 	    		'post_type' => 'picture_frames',
+	    		'nopaging' => true,
 		    	'meta_query' => array(
 		    		array(
 			    		'key' => 'wpf_picture_frame_type',
