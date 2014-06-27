@@ -158,6 +158,7 @@
 				else {
 					echo 'Uh oh, no mounts!';
 				}
+				wp_reset_query();
 			?>
 			</ul>
 		</div> <!-- /picture-frame-selector-lists -->
