@@ -200,6 +200,19 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 	//////////////////////////////////////////////////
 	// 
+	// Hook into single-product.php to add
+	// note about sizes
+	// 
+	//////////////////////////////////////////////////
+
+	add_action('woocommerce_after_main_content', 'wpf_picture_frame_size_note');
+
+	function wpf_picture_frame_size_note() {
+		echo 'See detailed product description below for exact sizes.';
+	}
+
+	//////////////////////////////////////////////////
+	// 
 	// Hook into Gravity Forms gform_pre_render and dynamically
 	// populate radio fields with picture frames and mounts
 	// 
