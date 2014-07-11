@@ -209,7 +209,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	add_action('woocommerce_single_product_summary', 'wpf_picture_frame_size_note', 30);
 
 	function wpf_picture_frame_size_note() {
-		echo '<p>See detailed <a href="#tab-description" id="size-link">product description</a> below for exact sizes.</p>';
+		if ( has_term('framed-map-prints', 'product_cat') ) {
+			echo '<p>See detailed <a href="#tab-description" id="size-link">product description</a> below for exact sizes.</p>';
+		}
 	}
 
 	//////////////////////////////////////////////////
