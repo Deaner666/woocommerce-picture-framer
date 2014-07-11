@@ -53,6 +53,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 		wp_enqueue_script( 'jquery-ui-core' );
 	    wp_enqueue_script( 'jquery-ui-widget' );
 	    wp_enqueue_script( 'jquery-ui-dialog' );
+	    wp_enqueue_script( 'picture_framer', plugins_url('/js/picture_framer.js', __FILE__ ), array( 'jquery' ) );
 	    wp_enqueue_script( 'picture_framer_modal', plugins_url('/js/picture_framer_modal.js', __FILE__ ), array( 'jquery-ui-widget' ) );
 	    wp_enqueue_style( 'picture_framer_modal', plugins_url('/css/picture_framer_modal.css', __FILE__ ) );
 	    wp_enqueue_style( 'jquery-ui', plugins_url('/css/jquery-ui.css', __FILE__ ) );
@@ -208,7 +209,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	add_action('woocommerce_single_product_summary', 'wpf_picture_frame_size_note', 30);
 
 	function wpf_picture_frame_size_note() {
-		echo '<p><strong>See detailed product description below for exact sizes.</strong></p>';
+		echo '<p>See detailed <a href="#tab-description" id="size-link">product description</a> below for exact sizes.</p>';
 	}
 
 	//////////////////////////////////////////////////
