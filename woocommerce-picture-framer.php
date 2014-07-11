@@ -205,10 +205,10 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// 
 	//////////////////////////////////////////////////
 
-	add_action('woocommerce_after_main_content', 'wpf_picture_frame_size_note');
+	add_action('woocommerce_single_product_summary', 'wpf_picture_frame_size_note', 30);
 
 	function wpf_picture_frame_size_note() {
-		echo 'See detailed product description below for exact sizes.';
+		echo '<p><strong>See detailed product description below for exact sizes.</strong></p>';
 	}
 
 	//////////////////////////////////////////////////
